@@ -1,0 +1,87 @@
+[gd_scene load_steps=12 format=3 uid="uid://dwnc451yplhx3"]
+
+[ext_resource type="Script" path="res://player/states/state_machine.gd" id="1"]
+[ext_resource type="Script" path="res://player/states/idle.gd" id="2"]
+[ext_resource type="Script" path="res://player/states/walk.gd" id="3"]
+[ext_resource type="Script" path="res://player/states/run.gd" id="4"]
+[ext_resource type="Script" path="res://player/states/roll.gd" id="5"]
+[ext_resource type="Script" path="res://player/states/jump.gd" id="6"]
+[ext_resource type="Script" path="res://player/states/stunned.gd" id="7"]
+[ext_resource type="Script" path="res://player/states/head_hit.gd" id="8"]
+[ext_resource type="Script" path="res://player/states/magic_area_attack.gd" id="9"]
+[ext_resource type="Script" path="res://player/states/magic_attack.gd" id="10"]
+[ext_resource type="Script" path="res://player/states/fall.gd" id="11"]
+
+[node name="PlayerState" type="Node"]
+script = ExtResource("1")
+starting_state = NodePath("idle")
+
+[node name="idle" type="Node" parent="."]
+script = ExtResource("2")
+jump_node = NodePath("../jump")
+roll_node = NodePath("../roll")
+fall_node = NodePath("../fall")
+walk_node = NodePath("../walk")
+run_node = NodePath("../run")
+animation_name = "idle"
+
+[node name="walk" type="Node" parent="."]
+script = ExtResource("3")
+jump_node = NodePath("../jump")
+roll_node = NodePath("../roll")
+fall_node = NodePath("../fall")
+idle_node = NodePath("../idle")
+walk_node = NodePath(".")
+run_node = NodePath("../run")
+animation_name = "walk"
+
+[node name="run" type="Node" parent="."]
+script = ExtResource("4")
+jump_node = NodePath("../jump")
+roll_node = NodePath("../roll")
+fall_node = NodePath("../fall")
+idle_node = NodePath("../idle")
+walk_node = NodePath("../walk")
+run_node = NodePath(".")
+animation_name = "run"
+
+[node name="jump" type="Node" parent="."]
+script = ExtResource("6")
+fall_node = NodePath("../fall")
+run_node = NodePath("../run")
+walk_node = NodePath("../walk")
+idle_node = NodePath("../idle")
+animation_name = "jump"
+
+[node name="roll" type="Node" parent="."]
+script = ExtResource("5")
+jump_node = NodePath("../jump")
+roll_node = NodePath(".")
+fall_node = NodePath("../fall")
+idle_node = NodePath("../idle")
+walk_node = NodePath("../walk")
+run_node = NodePath("../run")
+animation_name = "roll"
+
+[node name="fall" type="Node" parent="."]
+script = ExtResource("11")
+run_node = NodePath("../run")
+walk_node = NodePath("../walk")
+idle_node = NodePath("../idle")
+animation_name = "fall"
+
+[node name="magic_attack" type="Node" parent="."]
+script = ExtResource("10")
+animation_name = "magic_attack"
+
+[node name="magic_area_attack" type="Node" parent="."]
+script = ExtResource("9")
+animation_name = "magic_area_attack"
+
+[node name="head_hit" type="Node" parent="."]
+script = ExtResource("8")
+animation_name = "head_hit"
+
+[node name="stunned" type="Node" parent="."]
+script = ExtResource("7")
+animation_name = "stunned"

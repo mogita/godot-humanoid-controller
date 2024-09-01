@@ -1,0 +1,43 @@
+[gd_scene load_steps=6 format=3 uid="uid://bdmmmg8ylib8q"]
+
+[ext_resource type="MeshLibrary" uid="uid://c4xhjxm0h2x80" path="res://tiles/tiles.meshlib" id="1_agcna"]
+[ext_resource type="PackedScene" uid="uid://bxr3gaefr0ouv" path="res://player/player.tscn" id="2_b8ygo"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_phr8k"]
+
+[sub_resource type="Sky" id="Sky_3yund"]
+sky_material = SubResource("ProceduralSkyMaterial_phr8k")
+
+[sub_resource type="Environment" id="Environment_bx1ak"]
+background_mode = 2
+sky = SubResource("Sky_3yund")
+
+[node name="Level" type="Node3D"]
+
+[node name="Ground" type="Node3D" parent="."]
+
+[node name="Floor" type="GridMap" parent="Ground"]
+mesh_library = ExtResource("1_agcna")
+cell_center_y = false
+cell_scale = 50.0
+data = {
+"cells": PackedInt32Array(1, 1, 786432, 1, 0, 786432, 2, 0, 786432, 2, 65535, 786432, 1, 65534, 786432, 1, 65535, 786432, 0, 65535, 786432, 0, 0, 786432, 65535, 0, 786432, 65535, 65535, 786432, 0, 1, 786432, 0, 65534, 786432, 2, 1, 786432, 65535, 1, 786432, 65534, 1, 786432, 65534, 0, 786432, 65534, 65535, 786432, 65534, 65534, 786432, 65534, 65533, 786432, 65534, 65532, 786432, 65533, 65532, 786432, 65533, 65533, 786432, 65533, 65534, 786432, 65533, 65535, 786432, 65533, 0, 786432, 65533, 1, 786432, 65533, 2, 786432, 65534, 2, 786432, 65535, 2, 786432, 0, 2, 786432, 1, 2, 786432, 2, 2, 786432, 3, 2, 786432, 3, 1, 786432, 3, 0, 786432, 3, 65535, 786432, 3, 65534, 786432, 3, 65533, 786432, 2, 65533, 786432, 2, 65534, 786432, 65535, 65534, 786432, 65535, 65533, 786432, 65535, 65532, 786432, 0, 65532, 786432, 1, 65533, 786432, 0, 65533, 786432, 1, 65532, 786432, 2, 65532, 786432, 3, 65532, 786432)
+}
+
+[node name="Props" type="GridMap" parent="Ground"]
+mesh_library = ExtResource("1_agcna")
+cell_size = Vector3(1, 1, 1)
+cell_center_y = false
+cell_scale = 50.0
+data = {
+"cells": PackedInt32Array(65531, 4, 786433, 65531, 65534, 786433, 65534, 65531, 786433, 65530, 65530, 786433, 65531, 65535, 786433, 65531, 0, 786433, 65532, 4, 786433, 65533, 4, 786433, 65534, 4, 786433, 65534, 5, 786433, 65535, 4, 786433, 65535, 3, 786433, 5, 65529, 786433, 5, 65530, 786433, 5, 65531, 786433, 5, 5, 393218, 2, 65528, 786434, 65532, 65528, 786434)
+}
+
+[node name="Player" parent="." instance=ExtResource("2_b8ygo")]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_bx1ak")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.71451, 0.613216, 0.336812, -0.629346, 0.353057, 0.692297, 0.305613, -0.706624, 0.638187, 0, 0, 7.34628)
+shadow_enabled = true
