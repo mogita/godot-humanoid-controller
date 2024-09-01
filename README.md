@@ -4,6 +4,13 @@ A simple humanoid character controller with state machine and animation tree for
 
 This repository is reserved for my ease of development and references. You can use it freely for personal or commercial purposes under CC0 license (but you might want to pay attention to Mixamo animations or bring your own animations).
 
+## What It Does
+
+- Run, walk, jump whatsoever
+- State Machine for code separation
+- Animation Tree for blending animations
+- Spring Arm for camera control
+
 ## Setup Checkpoints
 
 When copying and pasting the player controller to a new project, make sure to go through these checkpoints:
