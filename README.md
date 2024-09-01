@@ -35,6 +35,8 @@ When copying and pasting the player controller to a new project, make sure to go
   - run: `Movement Speed`: 6.5
   - jump: `Jump Time to Peak`: 1; `Jump Time to Descent`: 10000; `Jump Movement Speed`: 3
   - roll: `Roll Time`: 0.4
+- Navigate to the `AnimationTree` node in the `Player` scene, edit the animations of each state as needed, while MUST set the `Advance -> Condition` of each transition, thus the Animation Tree can form a list of all the conditions that could be triggered by the state machine
+- Navigate to the `state_manager` node in the `Player` scene, expand it and check each "Animation Name" values, they connect a state to an animation "condition" in the Animation Tree
 
 ## Credits
 
